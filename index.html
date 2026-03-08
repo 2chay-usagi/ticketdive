@@ -14060,6 +14060,73 @@ document.addEventListener("DOMContentLoaded", function(){
 })();
 </script>
 
+
+<script id="poster-orientation-success-plus-src">
+(function(){
+  const V_STYLE = "height:399px;width:300px;max-width:400%;object-fit:contain;position:absolute;left:50%;transform:translateX(-50%);border-radius:0;";
+  const H_STYLE = "height:300px;width:389px;max-width:400%;object-fit:contain;position:absolute;left:50%;transform:translateX(-50%);border-radius:0;";
+
+  function applyPosterOrientation(img){
+    if(!img) return;
+    const w = img.naturalWidth;
+    const h = img.naturalHeight;
+    if(!w || !h) return;
+    img.style = (h >= w) ? V_STYLE : H_STYLE;
+  }
+
+  function bindPoster(img){
+    if(!img || img.__orientationBound) return;
+    img.__orientationBound = true;
+
+    const run = function(){ applyPosterOrientation(img); };
+
+    if(img.complete) run();
+    img.addEventListener('load', run);
+
+    const attrObserver = new MutationObserver(function(muts){
+      for(const m of muts){
+        if(m.type === 'attributes' && m.attributeName === 'src'){
+          if(img.complete) run();
+        }
+      }
+    });
+    attrObserver.observe(img, { attributes:true, attributeFilter:['src'] });
+  }
+
+  function watchPoster(){
+    const img = document.getElementById('mainPoster');
+    if(!img) return;
+    bindPoster(img);
+    if(img.complete) applyPosterOrientation(img);
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    watchPoster();
+    const input = document.getElementById('fPoster');
+    if(input){
+      input.addEventListener('change', function(){
+        setTimeout(watchPoster, 0);
+        setTimeout(watchPoster, 60);
+        setTimeout(watchPoster, 180);
+      });
+    }
+    const applyBtn = document.getElementById('localEditorApply');
+    if(applyBtn){
+      applyBtn.addEventListener('click', function(){
+        setTimeout(watchPoster, 0);
+        setTimeout(watchPoster, 60);
+        setTimeout(watchPoster, 180);
+      });
+    }
+  });
+
+  const observer = new MutationObserver(function(){
+    watchPoster();
+  });
+  observer.observe(document.body, { childList:true, subtree:true });
+})();
+</script>
+
 </body>
 <script>
   /* injected DOM templates (from trace snapshot) */
@@ -14223,7 +14290,7 @@ document.addEventListener("DOMContentLoaded", function(){
           <img id="mainPoster" src="${posterSrc || 'data:,'}"
                data-stored="${posterSrc || ''}"
                alt="イベント画像"
-               style="width:100%;height:399px;object-fit:cover;border-radius:0;" />
+               style="height:399px;width:300px;max-width:400%;object-fit:contain;position:absolute;left:50%;transform:translateX(-50%);border-radius:0;" />
         </div>
       `;
 
