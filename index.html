@@ -13217,13 +13217,18 @@
       </svg>
     </div>
     <input type="search" enterkeyhint="search" inputmode="search" placeholder="イベント/出演者/会場名で検索" class="NavHeader_searchInput__ddwEg" value="">
-  </form>
+  
+
+
+</form>
 </div>
 
 <button class="NavHeader_button__3DYQn" id="burgerBtn"><span></span><span></span><span></span></button>
             </div>
 
           </div>
+
+
         </div>
         <div class="FlexBox_flex__q0PvO NavMenu_backdrop__oUR1f NavMenu_backdropClosed__ps0Yv" role="presentation">
         </div>
@@ -13382,8 +13387,15 @@
                               style="--color: var(--b1); --bg-color: var(--undefined); --line-num: 1; font-size: 2.5rem; line-height: 200%; font-weight: 600;">TALE
                               N.T. FESTA FREELIVE Vol.34</span></span></span><span
                           style="width: 100%; white-space: nowrap; display: flex; overflow: hidden; gap: 1rem;"><span
-                            class="" style="display: inline-block;"><span class="Typography_root__axuOu"
-                              style="--color: var(--b1); --bg-color: var(--undefined); --line-num: 1; font-size: 1.5rem; line-height: 200%; font-weight: 600;" id="eventVenue">五反田G4</span></span></span>
+                            class="" style="display: inline-block;">
+<span style="display:inline-flex;align-items:center;gap:.8rem;">
+<span class="Typography_root__axuOu"
+id="eventVenue"
+style="--color: var(--b1); --bg-color: var(--undefined); --line-num: 1; font-size: 1.5rem; line-height: 200%; font-weight: 600;">五反田G4</span>
+<div id="ticketPartBorder" class="TicketCard_borderForInline__gkqY5" style="display:none;"></div>
+<span id="ticketPartText" class="Typography_root__axuOu" style="display:none;--color:var(--b1);font-size:1.5rem;line-height:200%;font-weight:600;"></span>
+</span>
+</span></span>
                         <div class="FlexBox_flex__q0PvO helvetica" role="presentation"
                           style="align-items: center; gap: 0.8rem; height: 2.8rem;"><span class="Typography_root__axuOu"
                             style="--color: var(--b1); --bg-color: var(--undefined); --line-num: 1; font-size: 3.5rem; line-height: 200%; font-weight: 700;" id="eventDate">2.26</span><span
@@ -13523,9 +13535,15 @@
       <label>イベント名
         <input id="fTitle" type="text" value="TALE N.T. FESTA FREELIVE Vol.34" />
       </label>
+
+      <div class="row">
       <label>会場
-        <input id="fVenue" type="text" value="五反田G4" />
-      </label>
+    <input id="fVenue" type="text" value="五反田G4" />
+  </label>
+  <label>部制（例: 1部）
+    <input id="fPart" type="text" value="" />
+  </label>
+    </div>
 
       <div class="row">
         <label>日付（例: 2.26）
@@ -13560,6 +13578,7 @@
       <label>カラーセット
         <select id="fColorTheme">
           <option value="green">緑</option>
+          <option value="yellow">黄色</option>
           <option value="blue">水色</option>
           <option value="purple">青</option>
           <option value="pink">ピンク</option>
@@ -14186,6 +14205,7 @@ document.addEventListener("DOMContentLoaded", function(){
 (function(){
   const THEMES = {
     green:    { label: '緑', bg: 'rgb(181, 228, 207)', accent: 'rgb(8, 164, 96)' },
+    yellow:   { label: '黄色', bg: 'rgb(242, 226, 188)', accent: 'rgb(210, 158, 31)' },
     blue:     { label: '青', bg: 'rgb(192, 225, 244)', accent: 'rgb(45, 156, 219)' },
     purple:   { label: '紫', bg: 'rgb(193, 207, 254)', accent: 'rgb(48, 96, 250)' },
     pink:     { label: 'ピンク', bg: 'rgb(248, 196, 200)', accent: 'rgb(232, 59, 71)' },
@@ -14282,7 +14302,80 @@ document.addEventListener("DOMContentLoaded", function(){
 })();
 </script>
 
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.getElementById("ticketPartInput");
+  const text = document.getElementById("ticketPartText");
+  const border = document.getElementById("ticketPartBorder");
+
+  if (!input || !text || !border) return;
+
+  const updatePartDisplay = () => {
+    const value = input.value.trim();
+
+    if (value) {
+      text.textContent = value;
+      text.style.display = "inline-block";
+      border.style.display = "block";
+    } else {
+      text.textContent = "";
+      text.style.display = "none";
+      border.style.display = "none";
+    }
+  };
+
+  input.addEventListener("input", updatePartDisplay);
+  updatePartDisplay();
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const fPart = document.getElementById('fPart');
+  if(!fPart) return;
+
+  let venueRow = Array.from(document.querySelectorAll('span')).find(s => s.textContent.trim()==='五反田G4');
+  if(!venueRow) return;
+
+  let border = document.getElementById('ticketPartBorder');
+  let text = document.getElementById('ticketPartText');
+
+  if(!border){
+    border = document.createElement('div');
+    border.id='ticketPartBorder';
+    border.className='TicketCard_borderForInline__gkqY5';
+    border.style.display='none';
+    venueRow.parentNode.appendChild(border);
+  }
+
+  if(!text){
+    text = document.createElement('span');
+    text.id='ticketPartText';
+    text.className='Typography_root__9AOcJ';
+    text.style.display='none';
+    text.style.fontSize='1.2rem';
+    text.style.fontWeight='600';
+    venueRow.parentNode.appendChild(text);
+  }
+
+  function syncPart(){
+    const v = fPart.value.trim();
+    text.textContent = v;
+    text.style.display = v ? 'inline-block' : 'none';
+    border.style.display = v ? 'block' : 'none';
+  }
+
+  fPart.addEventListener('input', syncPart);
+  syncPart();
+});
+</script>
 </body>
+
 <script>
   /* injected DOM templates (from trace snapshot) */
   window.__TD_CLONE__ = {
@@ -15024,6 +15117,7 @@ document.addEventListener("DOMContentLoaded", function(){
 (function(){
   const THEMES = {
     green:    { label: '緑', bg: 'rgb(181, 228, 207)', accent: 'rgb(8, 164, 96)' },
+    yellow:   { label: '黄色', bg: 'rgb(242, 226, 188)', accent: 'rgb(210, 158, 31)' },
     blue:     { label: '青', bg: 'rgb(192, 225, 244)', accent: 'rgb(45, 156, 219)' },
     purple:   { label: '紫', bg: 'rgb(193, 207, 254)', accent: 'rgb(48, 96, 250)' },
     pink:     { label: 'ピンク', bg: 'rgb(248, 196, 200)', accent: 'rgb(232, 59, 71)' },
@@ -15120,7 +15214,80 @@ document.addEventListener("DOMContentLoaded", function(){
 })();
 </script>
 
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.getElementById("ticketPartInput");
+  const text = document.getElementById("ticketPartText");
+  const border = document.getElementById("ticketPartBorder");
+
+  if (!input || !text || !border) return;
+
+  const updatePartDisplay = () => {
+    const value = input.value.trim();
+
+    if (value) {
+      text.textContent = value;
+      text.style.display = "inline-block";
+      border.style.display = "block";
+    } else {
+      text.textContent = "";
+      text.style.display = "none";
+      border.style.display = "none";
+    }
+  };
+
+  input.addEventListener("input", updatePartDisplay);
+  updatePartDisplay();
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const fPart = document.getElementById('fPart');
+  if(!fPart) return;
+
+  let venueRow = Array.from(document.querySelectorAll('span')).find(s => s.textContent.trim()==='五反田G4');
+  if(!venueRow) return;
+
+  let border = document.getElementById('ticketPartBorder');
+  let text = document.getElementById('ticketPartText');
+
+  if(!border){
+    border = document.createElement('div');
+    border.id='ticketPartBorder';
+    border.className='TicketCard_borderForInline__gkqY5';
+    border.style.display='none';
+    venueRow.parentNode.appendChild(border);
+  }
+
+  if(!text){
+    text = document.createElement('span');
+    text.id='ticketPartText';
+    text.className='Typography_root__9AOcJ';
+    text.style.display='none';
+    text.style.fontSize='1.2rem';
+    text.style.fontWeight='600';
+    venueRow.parentNode.appendChild(text);
+  }
+
+  function syncPart(){
+    const v = fPart.value.trim();
+    text.textContent = v;
+    text.style.display = v ? 'inline-block' : 'none';
+    border.style.display = v ? 'block' : 'none';
+  }
+
+  fPart.addEventListener('input', syncPart);
+  syncPart();
+});
+</script>
 </body>
+
 <script>
   /* injected DOM templates (from trace snapshot) */
   window.__TD_CLONE__ = {
@@ -15704,3 +15871,20 @@ document.addEventListener("DOMContentLoaded", function(){
 </script>
 
 </html>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+ const fPart=document.getElementById('fPart');
+ const txt=document.getElementById('ticketPartText');
+ const border=document.getElementById('ticketPartBorder');
+ if(!fPart||!txt||!border) return;
+ function sync(){
+   const v=fPart.value.trim();
+   txt.textContent=v;
+   txt.style.display=v?'inline-block':'none';
+   border.style.display=v?'block':'none';
+ }
+ fPart.addEventListener('input',sync);
+ sync();
+});
+</script>
