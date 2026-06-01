@@ -473,7 +473,7 @@
       top: 1px;
       left: 4px;
       transform: rotate(40deg);
-      width: 3px;
+      width: 4px;
       height: 8px;
       border-right: 2px solid var(--w1);
       border-bottom: 2px solid var(--w1);
@@ -1213,7 +1213,6 @@
       width: 2rem;
       height: 3px;
       border-radius: 999px;
-    box-shadow: 0 0 0 0.01px rgba(255,255,255,0.01);
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -3455,7 +3454,7 @@
       top: 1px;
       left: 4px;
       transform: rotate(40deg);
-      width: 3px;
+      width: 4px;
       height: 8px;
       border-right: 2px solid var(--w1);
       border-bottom: 2px solid var(--w1);
@@ -13186,62 +13185,6 @@
   opacity: 0.8;
 }
 
-
-  /* === Enter loading overlay clone === */
-  .TDEnterLoadingOverlay {
-    position: fixed;
-    inset: 0;
-    z-index: 200000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.50);
-    opacity: 0;
-    transition: opacity 0.06s linear;
-    pointer-events: all;
-  }
-
-  .TDEnterLoadingOverlay.is-visible {
-    opacity: 1;
-  }
-
-  .TDEnterLoadingSpinner {
-    position: relative;
-    width: 32px;
-    height: 32px;
-    animation: tdEnterSpinnerRotate 1.5s linear infinite;
-    will-change: transform;
-  }
-
-  .TDEnterLoadingSpinner i {
-    position: absolute;
-    inset: 0;
-    display: block;
-    transform-origin: 50% 50%;
-  }
-
-  .TDEnterLoadingSpinner i::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 1.5px;
-    width: 3.5px;
-    height: 9px;
-    transform: translateX(-50%);
-    border-radius: 999px;
-    background: rgb(255, 255, 255);
-  }
-
-  @keyframes tdEnterSpinnerRotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .TDEnterLoadingOverlay { transition: none; }
-    .TDEnterLoadingSpinner { animation-duration: 1s; }
-  }
-
 </style>
 </head>
 
@@ -13510,7 +13453,40 @@
                       fill="currentColor"></path>
                   </svg></div><span class="Typography_root__axuOu"
                   style="--color: var(--b1); --bg-color: var(--undefined); --line-num: 1; font-size: 1.2rem; white-space: nowrap; font-weight: 600;">分配する</span>
-              </div><button class="Button_medium__GU86_ Button_customColor__JrFWL" type="button"
+              </div>
+<div class="FlexBox_flex__q0PvO TicketAction_pointer__qp2Sf"
+  role="presentation"
+  style="align-items: center; flex-direction: column; gap: 0.8rem;">
+
+  <div class="Icon_outer__YturU"
+    style="--color: var(--b1); --size: 3.2rem; cursor: inherit;">
+
+    <svg xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      fill="none">
+
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M17.5 10.833v5a1.666 1.666 0 0 1-1.667 1.667H4.167A1.667 1.667 0 0 1 2.5 15.833V4.167A1.667 1.667 0 0 1 4.167 2.5h5M17.5 2.5 10 10M12.5 2.5h5v5">
+      </path>
+
+    </svg>
+  </div>
+
+  <span class="Typography_root__axuOu"
+    style="--color: var(--b1);
+    font-size: 1.2rem;
+    white-space: nowrap;
+    font-weight: 600;">
+
+    詳細
+  </span>
+</div>
+<button class="Button_medium__GU86_ Button_customColor__JrFWL" type="button"
                 style="height: 5.6rem; width: 25.2rem; border-radius: 3.2rem; background-color: rgb(8, 164, 96);">
                 <div class="FlexBox_flex__q0PvO" role="presentation" style="flex-direction: column; gap: 0.6rem;"><span
                     class="Typography_root__axuOu"
@@ -14594,60 +14570,17 @@ document.addEventListener("DOMContentLoaded", function(){
     cancelBtn?.addEventListener('click', close);
 
     confirmBtn?.addEventListener('click', () => {
-      playEnterLoadingThenApply(close);
-    });
-
-    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); }, { once: true });
-    document.body.style.overflow = 'hidden';
-  }
-
-
-  function getEnterLoadingDuration() {
-    return Math.floor(1000 + Math.random() * 1001);
-  }
-
-  function buildEnterLoadingOverlay() {
-    const overlay = document.createElement('div');
-    overlay.className = 'TDEnterLoadingOverlay';
-    overlay.setAttribute('aria-hidden', 'true');
-
-    const spinner = document.createElement('div');
-    spinner.className = 'TDEnterLoadingSpinner';
-    const opacities = [1, 0.88, 0.76, 0.64, 0.5, 0.38, 0.28, 0.18];
-    for (let i = 0; i < 8; i += 1) {
-      const spoke = document.createElement('i');
-      spoke.style.transform = `rotate(${i * 45}deg)`;
-      spoke.style.opacity = String(opacities[i]);
-      spinner.appendChild(spoke);
-    }
-    overlay.appendChild(spinner);
-    return overlay;
-  }
-
-  function playEnterLoadingThenApply(closeModal) {
-    const overlay = buildEnterLoadingOverlay();
-    const host = document.querySelector('.Modal_root__MCbfm') || document.body;
-    host.appendChild(overlay);
-    document.body.style.overflow = 'hidden';
-
-    requestAnimationFrame(() => overlay.classList.add('is-visible'));
-
-    window.setTimeout(() => {
       const st = loadState() || collectStateFromDom();
       st.entered = true;
       st.enteredTime = nowHHMM();
       saveState(st);
       applyStateToDom(st);
-      overlay.classList.remove('is-visible');
+      close();
+    });
 
-      window.setTimeout(() => {
-        overlay.remove();
-        if (typeof closeModal === 'function') closeModal();
-        document.body.style.overflow = '';
-      }, 90);
-    }, getEnterLoadingDuration());
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); }, { once: true });
+    document.body.style.overflow = 'hidden';
   }
-
 
   function bootEnterButton(){
     const n = nodes();
@@ -15039,7 +14972,7 @@ document.addEventListener("DOMContentLoaded", function(){
       <div class="tdPwCard">
         <h1 class="tdPwTitle">パスワード入力</h1>
         <p class="tdPwDesc">正しいパスワードを入力するとチケット画面を開けます。</p>
-        <input id="tdPwInput" class="tdPwInput" type="text" placeholder="パスワード" autocomplete="off" />
+        <input id="tdPwInput" class="tdPwInput" type="password" placeholder="パスワード" autocomplete="current-password" />
         <button id="tdPwButton" class="tdPwButton" type="button">入場</button>
         <div id="tdPwError" class="tdPwError"></div>
       </div>`;
@@ -15475,10 +15408,292 @@ document.addEventListener("DOMContentLoaded", function(){
     cancelBtn?.addEventListener('click', close);
 
     confirmBtn?.addEventListener('click', () => {
-      playEnterLoadingThenApply(close);
+      const st = loadState() || collectStateFromDom();
+      st.entered = true;
+      st.enteredTime = nowHHMM();
+      saveState(st);
+      applyStateToDom(st);
+      close();
     });
 
     window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); }, { once: true });
     document.body.style.overflow = 'hidden';
   }
 
+  function bootEnterButton(){
+    const n = nodes();
+    const btn = n.enterBtn;
+    btn?.addEventListener('click', openEnterModal);
+  }
+
+  // ===== local editor panel =====
+  function getEditorEls(){
+    return {
+      openFromMenu: document.getElementById('openEditorFromMenu'),
+      logoutBtn: document.getElementById('logoutOpenEditor'),
+      backdrop: document.getElementById('localEditorBackdrop'),
+      panel: document.getElementById('localEditor'),
+      closeBtn: document.getElementById('localEditorClose'),
+      cancelBtn: document.getElementById('localEditorCancel'),
+      applyBtn: document.getElementById('localEditorApply'),
+      body: document.querySelector('#localEditor .body'),
+      fTitle: document.getElementById('fTitle'),
+      fVenue: document.getElementById('fVenue'),
+      fDate: document.getElementById('fDate'),
+      fDow: document.getElementById('fDow'),
+      fOpen: document.getElementById('fOpen'),
+      fStart: document.getElementById('fStart'),
+      fName: document.getElementById('fName'),
+      fTicketType: document.getElementById('fticketType'),
+      fKind: document.getElementById('fKind'),
+      fBgRotate: document.getElementById('fBgRotate'),
+      fSeat: document.getElementById('fSeat'),
+      fQr: document.getElementById('fQr'),
+      fPoster: document.getElementById('fPoster'),
+    };
+  }
+
+  function openEditor(){
+    const { backdrop, panel } = getEditorEls();
+    if (!backdrop || !panel) return;
+    backdrop.classList.remove('hiddenLocal');
+    panel.classList.remove('hiddenLocal');
+    backdrop.setAttribute('aria-hidden', 'false');
+    panel.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeEditor(){
+    const { backdrop, panel } = getEditorEls();
+    if (!backdrop || !panel) return;
+    backdrop.classList.add('hiddenLocal');
+    panel.classList.add('hiddenLocal');
+    backdrop.setAttribute('aria-hidden', 'true');
+    panel.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function injectEnteredControls(){
+    const E = getEditorEls();
+    if (!E.body) return;
+    if (document.getElementById('enteredControls')) return;
+
+    const wrap = document.createElement('div');
+    wrap.id = 'enteredControls';
+    wrap.style.marginTop = '12px';
+    wrap.style.paddingTop = '12px';
+    wrap.style.borderTop = '1px solid rgba(0,0,0,.08)';
+
+    wrap.innerHTML = `
+      <div style="font-size:12px;font-weight:700;margin-bottom:8px;">状態</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <button type="button" id="btnSetUnused" style="flex:1;min-width:140px;height:40px;border-radius:10px;border:1px solid rgba(0,0,0,.15);background:#fff;font-weight:700;cursor:pointer;">未使用に戻す</button>
+        <button type="button" id="btnSetUsed" style="flex:1;min-width:140px;height:40px;border-radius:10px;border:1px solid rgba(232,21,21,.25);background:#e81515;color:#fff;font-weight:700;cursor:pointer;">入場済みにする</button>
+      </div>
+      <div style="font-size:12px;color:#666;margin-top:8px;line-height:1.4;">
+        ※「入場する」→確認→入場でも入場済みになります。手動でも切り替えできます。
+      </div>
+    `;
+
+    E.body.appendChild(wrap);
+
+    $('#btnSetUnused', wrap)?.addEventListener('click', () => {
+      const st = loadState() || collectStateFromForm();
+      st.entered = false;
+      st.enteredTime = null;
+      saveState(st);
+      applyStateToDom(st);
+    });
+
+    $('#btnSetUsed', wrap)?.addEventListener('click', () => {
+      const st = loadState() || collectStateFromForm();
+      st.entered = true;
+      st.enteredTime = nowHHMM();
+      saveState(st);
+      applyStateToDom(st);
+    });
+  }
+
+  function collectStateFromDom(){
+    const n = nodes();
+
+    const nameSpan = n.userName ? n.userName.querySelector('span') : null;
+    const nameTxt = nameSpan ? (nameSpan.textContent||'').trim() : '';
+
+    const st = {
+      title: (n.title?.textContent || '').trim(),
+      venue: (n.venue?.textContent || '').trim(),
+      date: (n.date?.textContent || '').trim(),
+      dow: (n.dow?.textContent || '').trim(),
+      open: (n.open?.textContent || '').trim(),
+      start: (n.start?.textContent || '').trim(),
+      ticketType: (n.ticketType?.textContent || '').trim(),
+      name: nameTxt,
+      kind: [
+        (n.kind1?.textContent || '').trim(),
+        (n.kind2?.textContent || '').trim()
+      ].filter(Boolean).join('\n'),
+      bgRotateDeg: (() => {
+        const m = (n.bgAnimation?.style?.transform || n.bgAnimation?.getAttribute('style') || '').match(/rotate\((-?\d+(?:\.\d+)?)deg\)/);
+        return m ? m[1] : '60';
+      })(),
+      seat: (n.seat?.textContent || '').trim(),
+      qrData: null,
+      posterData: getPersistedPosterSrc(),
+      entered: false,
+      enteredTime: null,
+    };
+    return st;
+  }
+
+  function collectStateFromForm(){
+    const E = getEditorEls();
+    return {
+      title: (E.fTitle?.value || '').trim(),
+      venue: (E.fVenue?.value || '').trim(),
+      date: (E.fDate?.value || '').trim(),
+      dow: (E.fDow?.value || '').trim(),
+      open: (E.fOpen?.value || '').trim(),
+      start: (E.fStart?.value || '').trim(),
+      ticketType: (E.fTicketType?.value || '').trim(),
+      name: (E.fName?.value || '').trim(),
+      kind: (E.fKind?.value || '').trim(),
+      bgRotateDeg: (E.fBgRotate?.value || '60').trim(),
+      seat: (E.fSeat?.value || '').trim(),
+      qrData: null,
+      posterData: (loadState()||{}).posterData || getPersistedPosterSrc(),
+      entered: (loadState()||{}).entered || false,
+      enteredTime: (loadState()||{}).enteredTime || null,
+    };
+  }
+
+  function applyStateToDom(st){
+    const n = nodes();
+
+    if (n.title && st.title) n.title.textContent = st.title;
+    if (n.venue && st.venue) n.venue.textContent = st.venue;
+    if (n.date && st.date) n.date.textContent = st.date;
+    if (n.dow && st.dow) n.dow.textContent = st.dow;
+    if (n.open && st.open) n.open.textContent = st.open;
+    if (n.start && st.start) n.start.textContent = st.start;
+    if (n.ticketType && typeof st.ticketType === 'string') n.ticketType.textContent = st.ticketType;
+
+    // user name: first span inside #userName
+    if (n.userName && st.name){
+      const first = n.userName.querySelector('span');
+      if (first) first.textContent = st.name;
+      else n.userName.textContent = st.name;
+    }
+
+    // kind lines -> #ticketKindLine1 / #ticketKindLine2
+    if (st.kind){
+      const lines = String(st.kind).split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+      const l1 = lines[0] || '';
+      const l2 = lines.slice(1).join(' ') || '';
+      if (n.kind1 && l1) n.kind1.textContent = l1;
+      if (n.kind2) n.kind2.textContent = l2;
+    }
+
+    // seat -> referenceNumber
+    if (n.seat && st.seat) n.seat.textContent = st.seat;
+
+    // background text rotation
+    if (n.bgAnimation){
+      const raw = String(st.bgRotateDeg ?? '60').trim();
+      const num = Number(raw);
+      const angle = Number.isFinite(num) ? num : 60;
+      n.bgAnimation.style.transform = `rotate(${angle}deg)`;
+      n.bgAnimation.style.transformOrigin = angle < 0 ? '25rem 70rem' : '40rem -5rem';
+    }
+
+    // qr image (only when not entered)
+    if (!st.entered){
+      bootQrOffline(st.qrData || null);
+      applyPosterToDom(st.posterData || getPersistedPosterSrc() || null);
+    }
+
+    // entered visuals
+    renderEntered(!!st.entered, st.enteredTime || null, st.posterData || null);
+  }
+
+  function applyStateToForm(st){
+    const E = getEditorEls();
+    if (!E.fTitle) return;
+    E.fTitle.value = st.title ?? E.fTitle.value;
+    E.fVenue.value = st.venue ?? E.fVenue.value;
+    E.fDate.value = st.date ?? E.fDate.value;
+    E.fDow.value = st.dow ?? E.fDow.value;
+    E.fOpen.value = st.open ?? E.fOpen.value;
+    E.fStart.value = st.start ?? E.fStart.value;
+    if (E.fTicketType) E.fTicketType.value = st.ticketType ?? E.fTicketType.value;
+    E.fName.value = st.name ?? E.fName.value;
+    E.fKind.value = st.kind ?? E.fKind.value;
+    if (E.fBgRotate) E.fBgRotate.value = st.bgRotateDeg ?? E.fBgRotate.value;
+    E.fSeat.value = st.seat ?? E.fSeat.value;
+  }
+
+  async function onApply(){
+    const E = getEditorEls();
+    const prev = loadState() || collectStateFromDom();
+    const st = { ...prev, ...collectStateFromForm() };
+
+    // files -> dataURL (persist to localStorage)
+    try{
+      const qrFile = E.fQr?.files?.[0];
+      if (qrFile) st.qrData = await readFileAsDataURL(qrFile);
+      const posterFile = E.fPoster?.files?.[0];
+      if (posterFile) st.posterData = await readFileAsDataURL(posterFile);
+    }catch(e){
+      // ignore file read errors
+    }
+
+    saveState(st);
+    applyStateToDom(st);
+    closeEditor();
+  }
+
+  function bootEditor(){
+    const E = getEditorEls();
+    if (!E.panel || !E.backdrop) return;
+
+    injectEnteredControls();
+
+    const openHandler = (e) => { e?.preventDefault?.(); openEditor(); closeNavMenu(); };
+    E.openFromMenu?.addEventListener('click', openHandler);
+    E.logoutBtn?.addEventListener('click', openHandler);
+    E.backdrop?.addEventListener('click', closeEditor);
+    E.closeBtn?.addEventListener('click', closeEditor);
+    E.cancelBtn?.addEventListener('click', closeEditor);
+    E.applyBtn?.addEventListener('click', onApply);
+
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeEditor(); });
+  }
+
+  function boot(){
+    captureOriginals();
+    bootNavMenu();
+    bootEditor();
+    bootEnterButton();
+
+    // hydrate from storage if present
+    const saved = loadState();
+    if (saved){
+      applyStateToDom(saved);
+      applyStateToForm(saved);
+      applyPosterToDom(saved.posterData || getPersistedPosterSrc() || null);
+    }else{
+      // ensure QR is visible offline by default
+      bootQrOffline(null);
+      applyPosterToDom(getPersistedPosterSrc() || null);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+})();
+</script>
+
+</html>
