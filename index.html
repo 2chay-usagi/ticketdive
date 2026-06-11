@@ -13388,7 +13388,7 @@
                               N.T. FESTA FREELIVE Vol.34</span></span></span><span
                           style="width: 100%; white-space: nowrap; display: flex; overflow: hidden; gap: 1rem;"><span
                             class="" style="display: inline-block;">
-<span style="display:inline-flex;align-items:center;gap:.8rem;">
+<span id="venuePartWrap" style="display:inline-flex;align-items:center;gap:.8rem;">
 <span class="Typography_root__axuOu"
 id="eventVenue"
 style="--color: var(--b1); --bg-color: var(--undefined); --line-num: 1; font-size: 1.5rem; line-height: 200%; font-weight: 600;">五反田G4</span>
@@ -14103,7 +14103,7 @@ document.addEventListener("DOMContentLoaded", function(){
   }
 
   function resetAndApply(){
-    ['eventName','ticketType'].forEach(function(id){
+    ['eventName','ticketType','venuePartWrap'].forEach(function(id){
       const existing = document.getElementById(id);
       if(!existing) return;
       const maybeWrap = existing.closest('.localMarqueeFix');
@@ -14119,6 +14119,7 @@ document.addEventListener("DOMContentLoaded", function(){
     requestAnimationFrame(function(){
       applyOne('eventName');
       applyOne('ticketType');
+      applyOne('venuePartWrap');
     });
   }
 
