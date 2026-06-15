@@ -14746,9 +14746,14 @@ function openEnterModal() {
     backdrop?.addEventListener('click', close);
     cancelBtn?.addEventListener('click', close);
 
-    confirmBtn?.addEventListener('click', () => {
-      playEnterLoadingThenApply(close);
-    });
+    const onConfirm = (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  playEnterLoadingThenApply(close);
+};
+
+confirmBtn?.addEventListener('click', onConfirm);
+confirmBtn?.addEventListener('touchend', onConfirm, { passive: false });
 
     window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); }, { once: true });
     document.body.style.overflow = 'hidden';
@@ -15653,9 +15658,14 @@ document.addEventListener('DOMContentLoaded', function(){
     backdrop?.addEventListener('click', close);
     cancelBtn?.addEventListener('click', close);
 
-    confirmBtn?.addEventListener('click', () => {
-      playEnterLoadingThenApply(close);
-    });
+    const onConfirm = (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  playEnterLoadingThenApply(close);
+};
+
+confirmBtn?.addEventListener('click', onConfirm);
+confirmBtn?.addEventListener('touchend', onConfirm, { passive: false });
 
     window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); }, { once: true });
     document.body.style.overflow = 'hidden';
