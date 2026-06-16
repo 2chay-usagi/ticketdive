@@ -14869,6 +14869,7 @@ function bootEnterButton(){
       fSeat: document.getElementById('fSeat'),
       fQr: document.getElementById('fQr'),
       fPoster: document.getElementById('fPoster'),
+      fPart: document.getElementById('fPart'),
     };
   }
 
@@ -14961,6 +14962,7 @@ function bootEnterButton(){
       posterData: getPersistedPosterSrc(),
       entered: false,
       enteredTime: null,
+      part:(document.getElementById('ticketPartText')?.textContent||'').trim(),
     };
     return st;
   }
@@ -14983,6 +14985,7 @@ function bootEnterButton(){
       posterData: (loadState()||{}).posterData || getPersistedPosterSrc(),
       entered: (loadState()||{}).entered || false,
       enteredTime: (loadState()||{}).enteredTime || null,
+      part:(E.fPart?.value||'').trim(),
     };
   }
 
@@ -14991,6 +14994,8 @@ function bootEnterButton(){
 
     if (n.title && st.title) n.title.textContent = st.title;
     if (n.venue && st.venue) n.venue.textContent = st.venue;
+    const tp=document.getElementById('ticketPartText'); const tb=document.getElementById('ticketPartBorder');
+    if(tp&&tb){tp.textContent=st.part||''; tp.style.display=st.part?'inline-block':'none'; tb.style.display=st.part?'block':'none';}
     if (n.date && st.date) n.date.textContent = st.date;
     if (n.dow && st.dow) n.dow.textContent = st.dow;
     if (n.open && st.open) n.open.textContent = st.open;
@@ -15049,6 +15054,7 @@ function bootEnterButton(){
     E.fKind.value = st.kind ?? E.fKind.value;
     if (E.fBgRotate) E.fBgRotate.value = st.bgRotateDeg ?? E.fBgRotate.value;
     E.fSeat.value = st.seat ?? E.fSeat.value;
+    if (E.fPart) E.fPart.value = st.part ?? E.fPart.value;
   }
 
   async function onApply(){
@@ -15881,6 +15887,7 @@ function bootEnterButton(){
       fSeat: document.getElementById('fSeat'),
       fQr: document.getElementById('fQr'),
       fPoster: document.getElementById('fPoster'),
+      fPart: document.getElementById('fPart'),
     };
   }
 
@@ -15973,6 +15980,7 @@ function bootEnterButton(){
       posterData: getPersistedPosterSrc(),
       entered: false,
       enteredTime: null,
+      part:(document.getElementById('ticketPartText')?.textContent||'').trim(),
     };
     return st;
   }
@@ -15995,6 +16003,7 @@ function bootEnterButton(){
       posterData: (loadState()||{}).posterData || getPersistedPosterSrc(),
       entered: (loadState()||{}).entered || false,
       enteredTime: (loadState()||{}).enteredTime || null,
+      part:(E.fPart?.value||'').trim(),
     };
   }
 
@@ -16003,6 +16012,8 @@ function bootEnterButton(){
 
     if (n.title && st.title) n.title.textContent = st.title;
     if (n.venue && st.venue) n.venue.textContent = st.venue;
+    const tp=document.getElementById('ticketPartText'); const tb=document.getElementById('ticketPartBorder');
+    if(tp&&tb){tp.textContent=st.part||''; tp.style.display=st.part?'inline-block':'none'; tb.style.display=st.part?'block':'none';}
     if (n.date && st.date) n.date.textContent = st.date;
     if (n.dow && st.dow) n.dow.textContent = st.dow;
     if (n.open && st.open) n.open.textContent = st.open;
@@ -16061,6 +16072,7 @@ function bootEnterButton(){
     E.fKind.value = st.kind ?? E.fKind.value;
     if (E.fBgRotate) E.fBgRotate.value = st.bgRotateDeg ?? E.fBgRotate.value;
     E.fSeat.value = st.seat ?? E.fSeat.value;
+    if (E.fPart) E.fPart.value = st.part ?? E.fPart.value;
   }
 
   async function onApply(){
@@ -16124,6 +16136,34 @@ function bootEnterButton(){
   } else {
     boot();
   }
+})();
+</script>
+
+
+<script>
+(function(){
+ function run(){
+   const fPart=document.getElementById('fPart');
+   const txt=document.getElementById('ticketPartText');
+   const border=document.getElementById('ticketPartBorder');
+   if(!fPart||!txt||!border) return;
+
+   function sync(){
+     const v=(fPart.value||'').trim();
+     txt.textContent=v;
+     txt.style.display=v?'inline-block':'none';
+     border.style.display=v?'block':'none';
+   }
+
+   fPart.addEventListener('input',sync);
+   sync();
+ }
+
+ if(document.readyState==='loading'){
+   document.addEventListener('DOMContentLoaded',run);
+ }else{
+   run();
+ }
 })();
 </script>
 
