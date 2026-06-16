@@ -13185,47 +13185,61 @@
   opacity: 0.8;
 }
 
+/* === Enter loading overlay clone === */
+  .TDEnterLoadingOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.50);
+    opacity: 0;
+    transition: opacity 0.06s linear;
+    pointer-events: all;
+  }
 
-.TDEnterLoadingOverlay {
-position: fixed;
-inset: 0;
-z-index: 200000;
-display: flex;
-align-items: center;
-justify-content: center;
-background: rgba(0,0,0,.50);
-opacity: 0;
-transition: opacity .06s linear;
-pointer-events: all;
-}
-.TDEnterLoadingOverlay.is-visible{opacity:1;}
-.TDEnterLoadingSpinner{
-position:relative;
-width:32px;
-height:32px;
-animation:tdEnterSpinnerRotate 1.5s linear infinite;
-}
-.TDEnterLoadingSpinner i{
-position:absolute;
-inset:0;
-display:block;
-transform-origin:50% 50%;
-}
-.TDEnterLoadingSpinner i::before{
-content:"";
-position:absolute;
-left:50%;
-top:1.5px;
-width:3.5px;
-height:9px;
-transform:translateX(-50%);
-border-radius:999px;
-background:#fff;
-}
-@keyframes tdEnterSpinnerRotate{
-from{transform:rotate(0deg);}
-to{transform:rotate(360deg);}
-}
+  .TDEnterLoadingOverlay.is-visible {
+    opacity: 1;
+  }
+
+  .TDEnterLoadingSpinner {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    animation: tdEnterSpinnerRotate 1.5s linear infinite;
+    will-change: transform;
+  }
+
+  .TDEnterLoadingSpinner i {
+    position: absolute;
+    inset: 0;
+    display: block;
+    transform-origin: 50% 50%;
+  }
+
+  .TDEnterLoadingSpinner i::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 1.5px;
+    width: 3.5px;
+    height: 9px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: rgb(255, 255, 255);
+  }
+
+  @keyframes tdEnterSpinnerRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .TDEnterLoadingOverlay { transition: none; }
+    .TDEnterLoadingSpinner { animation-duration: 1s; }
+  }
+
 
 </style>
 </head>
@@ -14084,6 +14098,62 @@ document.addEventListener("DOMContentLoaded", function(){
 .localMarqueeFixTrack{display:inline-flex; align-items:center; white-space:nowrap; will-change:transform; animation:localMarqueeFixMove var(--marquee-duration,10s) linear infinite;}
 .localMarqueeFixItem{display:inline-block; flex:none; padding-right:2.4rem;}
 @keyframes localMarqueeFixMove{from{transform:translateX(0)}to{transform:translateX(calc(-1 * var(--marquee-shift, 50%)))} }
+/* === Enter loading overlay clone === */
+  .TDEnterLoadingOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.50);
+    opacity: 0;
+    transition: opacity 0.06s linear;
+    pointer-events: all;
+  }
+
+  .TDEnterLoadingOverlay.is-visible {
+    opacity: 1;
+  }
+
+  .TDEnterLoadingSpinner {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    animation: tdEnterSpinnerRotate 1.5s linear infinite;
+    will-change: transform;
+  }
+
+  .TDEnterLoadingSpinner i {
+    position: absolute;
+    inset: 0;
+    display: block;
+    transform-origin: 50% 50%;
+  }
+
+  .TDEnterLoadingSpinner i::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 1.5px;
+    width: 3.5px;
+    height: 9px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: rgb(255, 255, 255);
+  }
+
+  @keyframes tdEnterSpinnerRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .TDEnterLoadingOverlay { transition: none; }
+    .TDEnterLoadingSpinner { animation-duration: 1s; }
+  }
+
+
 </style>
 <script id="local-marquee-fix-script">
 (function(){
@@ -14686,41 +14756,7 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   // ===== "入場する" confirm modal =====
-  
-function getEnterLoadingDuration(){
- return Math.floor(1000 + Math.random()*1001);
-}
-function buildEnterLoadingOverlay(){
- const overlay=document.createElement('div');
- overlay.className='TDEnterLoadingOverlay';
- const spinner=document.createElement('div');
- spinner.className='TDEnterLoadingSpinner';
- const opacities=[1,0.88,0.76,0.64,0.5,0.38,0.28,0.18];
- for(let i=0;i<8;i++){
-  const spoke=document.createElement('i');
-  spoke.style.transform=`rotate(${i*45}deg)`;
-  spoke.style.opacity=String(opacities[i]);
-  spinner.appendChild(spoke);
- }
- overlay.appendChild(spinner);
- return overlay;
-}
-function playEnterLoadingThenApply(closeModal){
- const overlay=buildEnterLoadingOverlay();
- document.body.appendChild(overlay);
- requestAnimationFrame(()=>overlay.classList.add('is-visible'));
- setTimeout(()=>{
-  const st=loadState()||collectStateFromDom();
-  st.entered=true;
-  st.enteredTime=nowHHMM();
-  saveState(st);
-  applyStateToDom(st);
-  overlay.remove();
-  if(typeof closeModal==='function') closeModal();
- },getEnterLoadingDuration());
-}
-
-function openEnterModal() {
+  function openEnterModal() {
     const T = window.__TD_CLONE__ || {};
     if (!T.modalHtml) return;
     if (document.querySelector('.Modal_root__MCbfm')) return;
@@ -14754,7 +14790,56 @@ function openEnterModal() {
     document.body.style.overflow = 'hidden';
   }
 
-  function bootEnterButton(){
+  function getEnterLoadingDuration() {
+    return Math.floor(1000 + Math.random() * 1001);
+  }
+
+  function buildEnterLoadingOverlay() {
+    const overlay = document.createElement('div');
+    overlay.className = 'TDEnterLoadingOverlay';
+    overlay.setAttribute('aria-hidden', 'true');
+
+    const spinner = document.createElement('div');
+    spinner.className = 'TDEnterLoadingSpinner';
+    const opacities = [1, 0.88, 0.76, 0.64, 0.5, 0.38, 0.28, 0.18];
+    for (let i = 0; i < 8; i += 1) {
+      const spoke = document.createElement('i');
+      spoke.style.transform = `rotate(${i * 45}deg)`;
+      spoke.style.opacity = String(opacities[i]);
+      spinner.appendChild(spoke);
+    }
+    overlay.appendChild(spinner);
+    return overlay;
+  }
+
+  function playEnterLoadingThenApply(closeModal) {
+    const overlay = buildEnterLoadingOverlay();
+    const host = document.querySelector('.Modal_root__MCbfm') || document.body;
+    host.appendChild(overlay);
+    document.body.style.overflow = 'hidden';
+
+    requestAnimationFrame(() => overlay.classList.add('is-visible'));
+
+    window.setTimeout(() => {
+      const st = loadState() || collectStateFromDom();
+      st.entered = true;
+      st.enteredTime = nowHHMM();
+      saveState(st);
+      applyStateToDom(st);
+      overlay.classList.remove('is-visible');
+
+      window.setTimeout(() => {
+        overlay.remove();
+        if (typeof closeModal === 'function') closeModal();
+        document.body.style.overflow = '';
+      }, 90);
+    }, getEnterLoadingDuration());
+  }
+
+
+  
+
+function bootEnterButton(){
     const n = nodes();
     const btn = n.enterBtn;
     btn?.addEventListener('click', openEnterModal);
@@ -15116,6 +15201,62 @@ function openEnterModal() {
   .tdPwError {
     min-height: 1.4em; margin-top: 10px; color: #d00; font-size: 1.3rem; font-weight: 600;
   }
+/* === Enter loading overlay clone === */
+  .TDEnterLoadingOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.50);
+    opacity: 0;
+    transition: opacity 0.06s linear;
+    pointer-events: all;
+  }
+
+  .TDEnterLoadingOverlay.is-visible {
+    opacity: 1;
+  }
+
+  .TDEnterLoadingSpinner {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    animation: tdEnterSpinnerRotate 1.5s linear infinite;
+    will-change: transform;
+  }
+
+  .TDEnterLoadingSpinner i {
+    position: absolute;
+    inset: 0;
+    display: block;
+    transform-origin: 50% 50%;
+  }
+
+  .TDEnterLoadingSpinner i::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 1.5px;
+    width: 3.5px;
+    height: 9px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: rgb(255, 255, 255);
+  }
+
+  @keyframes tdEnterSpinnerRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .TDEnterLoadingOverlay { transition: none; }
+    .TDEnterLoadingSpinner { animation-duration: 1s; }
+  }
+
+
 </style>
 <script>
 (function(){
@@ -15661,7 +15802,56 @@ document.addEventListener('DOMContentLoaded', function(){
     document.body.style.overflow = 'hidden';
   }
 
-  function bootEnterButton(){
+  function getEnterLoadingDuration() {
+    return Math.floor(1000 + Math.random() * 1001);
+  }
+
+  function buildEnterLoadingOverlay() {
+    const overlay = document.createElement('div');
+    overlay.className = 'TDEnterLoadingOverlay';
+    overlay.setAttribute('aria-hidden', 'true');
+
+    const spinner = document.createElement('div');
+    spinner.className = 'TDEnterLoadingSpinner';
+    const opacities = [1, 0.88, 0.76, 0.64, 0.5, 0.38, 0.28, 0.18];
+    for (let i = 0; i < 8; i += 1) {
+      const spoke = document.createElement('i');
+      spoke.style.transform = `rotate(${i * 45}deg)`;
+      spoke.style.opacity = String(opacities[i]);
+      spinner.appendChild(spoke);
+    }
+    overlay.appendChild(spinner);
+    return overlay;
+  }
+
+  function playEnterLoadingThenApply(closeModal) {
+    const overlay = buildEnterLoadingOverlay();
+    const host = document.querySelector('.Modal_root__MCbfm') || document.body;
+    host.appendChild(overlay);
+    document.body.style.overflow = 'hidden';
+
+    requestAnimationFrame(() => overlay.classList.add('is-visible'));
+
+    window.setTimeout(() => {
+      const st = loadState() || collectStateFromDom();
+      st.entered = true;
+      st.enteredTime = nowHHMM();
+      saveState(st);
+      applyStateToDom(st);
+      overlay.classList.remove('is-visible');
+
+      window.setTimeout(() => {
+        overlay.remove();
+        if (typeof closeModal === 'function') closeModal();
+        document.body.style.overflow = '';
+      }, 90);
+    }, getEnterLoadingDuration());
+  }
+
+
+  
+
+function bootEnterButton(){
     const n = nodes();
     const btn = n.enterBtn;
     btn?.addEventListener('click', openEnterModal);
