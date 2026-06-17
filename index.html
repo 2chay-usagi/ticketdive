@@ -15732,16 +15732,8 @@ document.addEventListener('DOMContentLoaded', function(){
       applyPosterToDom(posterSrc || null);
     }
 
-    // 2) Replace lower action with "entered" text
-    const enteredHtml = `
-      <div style="width:100%;height:5.4rem;display:flex;align-items:center;justify-content:center;">
-        <span class="Typography_root__axuOu"
-              style="--color: var(--b1); --bg-color: transparent; --line-num: 1;
-                     font-size: 2rem; font-weight: 600;">
-          入場済みのチケットです
-        </span>
-      </div>
-    `;
+    // 2) keep lower area unchanged after entering
+    const enteredHtml = original.lowerHTML || '';
 
     if (n.lowerWrapper) {
       n.lowerWrapper.innerHTML = enteredHtml;
