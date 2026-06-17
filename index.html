@@ -12902,7 +12902,6 @@
       object-fit: contain;
     }
 
-
     /* === stronger centering overrides (fix slight left shift) === */
     .TicketIdPage_ticketWrapper__meoQN {
       padding-left: 0 !important;
@@ -12945,7 +12944,6 @@
       top: 50% !important;
       transform: translate(-50%, -50%) !important;
     }
-
 
     /* === overrides based on fff.html === */
     .swiperOfTicket_swiper__brmtL {
@@ -13002,7 +13000,6 @@
       max-height: 100%;
       object-fit: contain;
     }
-
 
     /* === ticket card centering (mobile-safe) === */
     /* The original capture had per-slide margins; on 1-slide pages it causes a subtle left drift.
@@ -13076,7 +13073,6 @@
       }
     }
 
-
     /* === local marquee (mobile overflow) === */
     .localMarquee {
       position: relative;
@@ -13111,7 +13107,6 @@
       }
     }
 
-
     /* === Realistic NavHeader layout === */
     header {
       display: flex !important;
@@ -13141,20 +13136,17 @@
       margin-right:auto !important;
     }
 
-
 /* force card size same as small */
 .EventListUnit_shadowWrapper__MVPq5{
   max-width: 28.8rem !important;
   --card-width: 28.8rem !important;
 }
 
-
 /* === ticket size like scaled version === */
 .TicketCard_ticketContainer__R_d2e{
   transform: scale(0.8, 0.86);
   transform-origin: top center;
 }
-
 
 /* === keep ticket scaled but prevent stamp distortion === */
 .TicketCard_ticketContainer__R_d2e{
@@ -13168,7 +13160,6 @@
   right:-40px !important;
   bottom:-40px !important;
 }
-
 
 /* ticket scaled */
 .TicketCard_ticketContainer__R_d2e{
@@ -13240,7 +13231,6 @@
     .TDEnterLoadingSpinner { animation-duration: 1s; }
   }
 
-
 </style>
 </head>
 
@@ -13275,7 +13265,6 @@
     <input type="search" enterkeyhint="search" inputmode="search" placeholder="イベント/出演者/会場名で検索" class="NavHeader_searchInput__ddwEg" value="">
   
 
-
 </form>
 </div>
 
@@ -13283,7 +13272,6 @@
             </div>
 
           </div>
-
 
         </div>
         <div class="FlexBox_flex__q0PvO NavMenu_backdrop__oUR1f NavMenu_backdropClosed__ps0Yv" role="presentation">
@@ -13671,7 +13659,6 @@ style="--color: var(--b1); --bg-color: var(--undefined); --line-num: 1; font-siz
     </div>
   </aside>
 
-
   <script>
     (() => {
       const $ = (sel, root = document) => root.querySelector(sel);
@@ -13742,7 +13729,6 @@ style="--color: var(--b1); --bg-color: var(--undefined); --line-num: 1; font-siz
       };
       ensureDummyQr();
 
-
       const maybeCanvas = (qrContainer || ticketRoot).querySelector('canvas');
       let qrImg = ticketRoot.querySelector('img.localQrImg');
 
@@ -13776,7 +13762,6 @@ style="--color: var(--b1); --bg-color: var(--undefined); --line-num: 1; font-siz
       if (!posterImg) {
         posterImg = ticketRoot.querySelector('img');
       }
-
 
       // Load persisted edits (text + optional images)
       const stored = readStorage();
@@ -13818,7 +13803,6 @@ style="--color: var(--b1); --bg-color: var(--undefined); --line-num: 1; font-siz
         if (!node) return;
         node.textContent = value;
       }
-
 
       const STORAGE_KEY = 'tdClone.ticket.v1';
 
@@ -13920,7 +13904,6 @@ style="--color: var(--b1); --bg-color: var(--undefined); --line-num: 1; font-siz
         bg.style.transformOrigin = angle < 0 ? '25rem 70rem' : '40rem -5rem';
       }
 
-
       async function apply() {
         applyFromForm();
         await applyAndMaybeStoreImages();
@@ -13998,7 +13981,6 @@ style="--color: var(--b1); --bg-color: var(--undefined); --line-num: 1; font-siz
     })();
   </script>
 
-
   <script>
     (() => {
       const btn = document.querySelector('.NavHeader_searchButtonSp__QqGd9');
@@ -14036,7 +14018,6 @@ window.addEventListener("load", function(){
 });
 </script>
 
-
 <script>
 document.addEventListener("DOMContentLoaded", function(){
   const input = document.getElementById("fPoster");
@@ -14073,7 +14054,6 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 </script>
 
-
 <script>
 // --- TicketType patch ---
 (function(){
@@ -14091,7 +14071,6 @@ document.addEventListener("DOMContentLoaded", function(){
 })();
 // --- end patch ---
 </script>
-
 
 <style id="local-marquee-fix-style">
 .localMarqueeFix{display:block; width:100%; overflow:hidden; white-space:nowrap; position:relative;}
@@ -14152,7 +14131,6 @@ document.addEventListener("DOMContentLoaded", function(){
     .TDEnterLoadingOverlay { transition: none; }
     .TDEnterLoadingSpinner { animation-duration: 1s; }
   }
-
 
 </style>
 <script id="local-marquee-fix-script">
@@ -14246,7 +14224,6 @@ document.addEventListener("DOMContentLoaded", function(){
 })();
 </script>
 
-
 <script id="poster-orientation-success-plus-src">
 (function(){
   const V_STYLE = "height:399px;width:300px;max-width:400%;object-fit:contain;position:absolute;left:50%;transform:translateX(-50%);border-radius:0;";
@@ -14312,7 +14289,6 @@ document.addEventListener("DOMContentLoaded", function(){
   observer.observe(document.body, { childList:true, subtree:true });
 })();
 </script>
-
 
 <script id="ticket-theme-editor-script">
 (function(){
@@ -14415,10 +14391,6 @@ document.addEventListener("DOMContentLoaded", function(){
 })();
 </script>
 
-
-
-
-
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("ticketPartInput");
@@ -14445,7 +14417,6 @@ document.addEventListener("DOMContentLoaded", () => {
   updatePartDisplay();
 });
 </script>
-
 
 <script>
 document.addEventListener('DOMContentLoaded', function(){
@@ -14534,7 +14505,6 @@ document.addEventListener('DOMContentLoaded', function(){
     const d = new Date();
     return String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
   };
-
 
   const isForcedPosterSrc = (src) => /(?:^|\/)(poster\.png|ticket_before\.png)(?:$|[?#])/.test(String(src || ''));
 
@@ -14684,7 +14654,7 @@ document.addEventListener('DOMContentLoaded', function(){
       <div style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:0 1rem;gap:1.2rem;">
         <div class="FlexBox_flex__q0PvO TicketAction_pointer__qp2Sf"
   role="presentation"
-  style="align-items: center; flex-direction: column; gap:  0.6rem;">
+  style="align-items: center; flex-direction: column; gap:  0.8rem;">
 
   <div class="Icon_outer__YturU"
     style="--color: var(--b1); --size: 3.2rem; cursor: inherit;">
@@ -14725,10 +14695,11 @@ document.addEventListener('DOMContentLoaded', function(){
         </div>
       </div>
     `;
-if (n.lowerWrapper) {
-      n.lowerWrapper.innerHTML = enteredHtml;
-    } else if (n.enterBtn) {
-      n.enterBtn.outerHTML = enteredHtml;
+const lowerNow=document.querySelector('[class*="lowerWrapper"]');
+    if (lowerNow){
+      lowerNow.innerHTML=enteredHtml;
+    } else if (n.enterBtn){
+      n.enterBtn.outerHTML=enteredHtml;
     }
   }
 
@@ -14871,7 +14842,6 @@ if (n.lowerWrapper) {
       }, 90);
     }, getEnterLoadingDuration());
   }
-
 
   
 
@@ -15157,7 +15127,6 @@ function bootEnterButton(){
 })();
 </script>
 
-
 <script id="qr-apply-fix-script">
 (function(){
   function readAsDataURL(file){
@@ -15205,8 +15174,6 @@ function bootEnterButton(){
   });
 })();
 </script>
-
-
 
 <style>
   body.td-pw-locked { overflow: hidden !important; }
@@ -15298,7 +15265,6 @@ function bootEnterButton(){
     .TDEnterLoadingSpinner { animation-duration: 1s; }
   }
 
-
 </style>
 <script>
 (function(){
@@ -15366,850 +15332,6 @@ function bootEnterButton(){
   }
 })();
 </script>
-
-
-<script id="ticket-theme-editor-script">
-(function(){
-  const THEMES = {
-    green:    { label: '緑', bg: 'rgb(181, 228, 207)', accent: 'rgb(8, 164, 96)' },
-    yellow:   { label: '黄色', bg: 'rgb(242, 226, 188)', accent: 'rgb(210, 158, 31)' },
-    blue:     { label: '青', bg: 'rgb(192, 225, 244)', accent: 'rgb(45, 156, 219)' },
-    purple:   { label: '紫', bg: 'rgb(193, 207, 254)', accent: 'rgb(48, 96, 250)' },
-    pink:     { label: 'ピンク', bg: 'rgb(248, 196, 200)', accent: 'rgb(232, 59, 71)' },
-    lavender: { label: '薄紫', bg: 'rgb(235, 193, 223)', accent: 'rgb(187, 47, 199)' },
-    orange:   { label: 'オレンジ', bg: 'rgb(249, 209, 183)', accent: 'rgb(236, 102, 15)' }
-  };
-
-  function getThemeSelect(){
-    return document.getElementById('fColorTheme');
-  }
-
-  function getState(){
-    try { return JSON.parse(localStorage.getItem('td_clone_state_v3') || 'null') || {}; }
-    catch(e){ return {}; }
-  }
-
-  function setState(next){
-    try {
-      const prev = getState();
-      localStorage.setItem('td_clone_state_v3', JSON.stringify({ ...prev, ...next }));
-    } catch(e) {}
-  }
-
-  function applyTheme(themeKey){
-    const theme = THEMES[themeKey] || THEMES.green;
-    const ticketWrap = document.querySelector('.TicketIdPage_ticketWrapper__meoQN');
-    const ticketTypeBadge = document.getElementById('ticketTypeLabel') || document.querySelector('[id^="referenceNumber-"]')?.parentElement || Array.from(document.querySelectorAll('span,div,button')).find(el => {
-      const s = (el.getAttribute('style') || '').replace(/\s+/g, ' ');
-      return s.includes('border-radius: 2px') && s.includes('padding: 1.1rem 0.8rem');
-    });
-    const enterBtn = document.querySelector('.TicketButtonButton_ticketButton__qGxYv button') || Array.from(document.querySelectorAll('button,div')).find(el => {
-      const s = (el.getAttribute('style') || '').replace(/\s+/g, ' ');
-      return s.includes('width: 25.2rem') && s.includes('height: 5.6rem');
-    });
-
-    if (ticketWrap) ticketWrap.style.backgroundColor = theme.bg;
-    if (ticketTypeBadge) {
-      ticketTypeBadge.style.backgroundColor = theme.accent;
-      ticketTypeBadge.style.setProperty('background-color', theme.accent, 'important');
-    }
-    if (enterBtn) {
-      enterBtn.style.backgroundColor = theme.accent;
-      enterBtn.style.setProperty('background-color', theme.accent, 'important');
-    }
-
-    document.documentElement.style.setProperty('--ticket-theme-bg', theme.bg);
-    document.documentElement.style.setProperty('--ticket-theme-accent', theme.accent);
-  }
-
-  function syncSelectFromState(){
-    const sel = getThemeSelect();
-    if (!sel) return;
-    const st = getState();
-    sel.value = THEMES[st.colorTheme] ? st.colorTheme : 'green';
-  }
-
-  function applyFromState(){
-    const st = getState();
-    applyTheme(THEMES[st.colorTheme] ? st.colorTheme : 'green');
-    syncSelectFromState();
-  }
-
-  function bind(){
-    const sel = getThemeSelect();
-    const applyBtn = document.getElementById('localEditorApply');
-    if (sel && !sel.dataset.themeBound) {
-      sel.dataset.themeBound = '1';
-      sel.addEventListener('change', function(){
-        applyTheme(sel.value);
-      });
-    }
-    if (applyBtn && !applyBtn.dataset.themeBound) {
-      applyBtn.dataset.themeBound = '1';
-      applyBtn.addEventListener('click', function(){
-        const current = getThemeSelect()?.value || 'green';
-        setState({ colorTheme: current });
-        applyTheme(current);
-        requestAnimationFrame(function(){ applyTheme(current); });
-      });
-    }
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function(){ bind(); applyFromState(); });
-  } else {
-    bind();
-    applyFromState();
-  }
-
-  window.addEventListener('load', function(){
-    bind();
-    applyFromState();
-  });
-})();
-</script>
-
-
-
-
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const input = document.getElementById("ticketPartInput");
-  const text = document.getElementById("ticketPartText");
-  const border = document.getElementById("ticketPartBorder");
-
-  if (!input || !text || !border) return;
-
-  const updatePartDisplay = () => {
-    const value = input.value.trim();
-
-    if (value) {
-      text.textContent = value;
-      text.style.display = "inline-block";
-      border.style.display = "block";
-    } else {
-      text.textContent = "";
-      text.style.display = "none";
-      border.style.display = "none";
-    }
-  };
-
-  input.addEventListener("input", updatePartDisplay);
-  updatePartDisplay();
-});
-</script>
-
-
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  const fPart = document.getElementById('fPart');
-  if(!fPart) return;
-
-  let venueRow = Array.from(document.querySelectorAll('span')).find(s => s.textContent.trim()==='五反田G4');
-  if(!venueRow) return;
-
-  let border = document.getElementById('ticketPartBorder');
-  let text = document.getElementById('ticketPartText');
-
-  if(!border){
-    border = document.createElement('div');
-    border.id='ticketPartBorder';
-    border.className='TicketCard_borderForInline__gkqY5';
-    border.style.display='none';
-    venueRow.parentNode.appendChild(border);
-  }
-
-  if(!text){
-    text = document.createElement('span');
-    text.id='ticketPartText';
-    text.className='Typography_root__9AOcJ';
-    text.style.display='none';
-    text.style.fontSize='1.2rem';
-    text.style.fontWeight='600';
-    venueRow.parentNode.appendChild(text);
-  }
-
-  function syncPart(){
-    const v = fPart.value.trim();
-    text.textContent = v;
-    text.style.display = v ? 'inline-block' : 'none';
-    border.style.display = v ? 'block' : 'none';
-  }
-
-  fPart.addEventListener('input', syncPart);
-  syncPart();
-});
-</script>
 </body>
-
-<script>
-  /* injected DOM templates (from trace snapshot) */
-  window.__TD_CLONE__ = {
-    modalHtml: "<div class=\"Fade_fade-in___mqaF Modal_root__MCbfm\"><div class=\"Modal_backdrop__AeKmW\"></div><div class=\"Modal_modal__J3vKN Modal_medium___1Irw Modal_center__k4ef_\"><div class=\"FlexBox_flex__q0PvO Modal_cardContainer__KUYHH\" role=\"presentation\" style=\"margin: 2.4rem; overflow: scroll; border-radius: 1.6rem;\"><div class=\"Modal_contentStyle__xyrd1\"><div class=\"FlexBox_flex__q0PvO EnterModal_modalContent__8OQg8\" role=\"presentation\" style=\"flex-direction: column; gap: 3.2rem; justify-content: center; align-items: center;\"><span class=\"EnterModal_closeButton__tTxFU\"><div class=\"Icon_outer__YturU\" style=\"--color: var(--b1); --size: 2.4rem; cursor: inherit;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\"><path d=\"M4.43 19.57c.187.186.409.314.665.383.264.063.524.063.78 0 .264-.07.49-.194.676-.372L12 14.12l5.463 5.448c.186.194.403.322.652.384.256.063.512.063.768 0 .264-.07.49-.201.676-.395.202-.187.334-.408.396-.664a1.656 1.656 0 0 0 0-.78 1.342 1.342 0 0 0-.384-.663l-5.44-5.46 5.44-5.448c.194-.186.322-.407.384-.663a1.607 1.607 0 0 0 0-.768 1.307 1.307 0 0 0-.396-.675 1.344 1.344 0 0 0-.675-.385 1.436 1.436 0 0 0-.77 0 1.382 1.382 0 0 0-.651.373L12 9.873l-5.45-5.46a1.43 1.43 0 0 0-.676-.36 1.48 1.48 0 0 0-.78 0 1.382 1.382 0 0 0-.664.372 1.41 1.41 0 0 0-.384.687 1.607 1.607 0 0 0 0 .768c.062.256.186.477.372.663l5.463 5.448-5.463 5.46c-.186.186-.31.407-.372.663a1.655 1.655 0 0 0 0 .78c.062.256.19.481.384.675Z\" fill=\"currentColor\"></path></svg></div></span><div class=\"FlexBox_flex__q0PvO\" role=\"presentation\" style=\"flex-direction: column; justify-content: center; align-items: center;\"><span class=\"Typography_root__axuOu EnterModal_warning__w83S_\" style=\"--color: var(--red1); --bg-color: var(--undefined); --line-num: 1; font-weight: 700; line-height: 175%; font-size: 2rem;\">必ず係員が操作してください</span><span class=\"Typography_root__axuOu\" style=\"--color: var(--b1); --bg-color: var(--undefined); --line-num: 1; font-weight: 700; line-height: 175%; font-size: 2rem;\">本当に入場しますか?</span></div><div class=\"FlexBox_flex__q0PvO\" role=\"presentation\"><span class=\"Typography_root__axuOu\" style=\"--color: var(--b1); --bg-color: var(--undefined); --line-num: 1; line-height: 175%; align-items: center;\">誤って入場するを押した場合、\nこの操作は取り消せません。</span></div><div class=\"FlexBox_flex__q0PvO\" role=\"presentation\" style=\"gap: 2.2rem;\"><button class=\"Button_medium__GU86_ Button_rectGrayWhite__sbQaC\" type=\"button\" style=\"width: 14.4rem; height: 4.6rem;\"><span class=\"Typography_root__axuOu\" style=\"--color: var(--b1); --bg-color: var(--undefined); --line-num: 1;\">キャンセル</span></button><button class=\"Button_medium__GU86_ Button_rectMain___A3NV\" type=\"button\" style=\"width: 14.4rem; height: 4.6rem;\"><span class=\"Typography_root__axuOu\" style=\"--color: var(--w1); --bg-color: var(--undefined); --line-num: 1;\">入場する</span></button></div></div></div></div></div></div>",
-    stampHtml: "<div class=\"FlexBox_flex__q0PvO EnteredStamp_enteredStamp__2Ny_Y\" role=\"presentation\" style=\"align-items: center; justify-content: center;\"><span class=\"Typography_root__axuOu EnteredStamp_entered__8mL0N\" style=\"--color: var(--b1); --bg-color: var(--undefined); --line-num: 1; font-weight: 700; text-align: center; font-size: 1.6rem;\">入場済</span><span class=\"Typography_root__axuOu EnteredStamp_enteredRotate__JFP_U\" style=\"--color: var(--b1); --bg-color: var(--undefined); --line-num: 1; font-weight: 700; text-align: center; font-size: 1.6rem;\">入場済</span><div class=\"FlexBox_flex__q0PvO EnteredStamp_outerCircle__9fjqf\" role=\"presentation\" style=\"flex-direction: column; align-items: center; justify-content: center;\"><span class=\"Typography_root__axuOu EnteredStamp_time__MHXMu\" style=\"--color: var(--b1); --bg-color: var(--undefined); --line-num: 1; font-weight: 700; text-align: center; font-size: 2.8rem;\">22:46</span></div><div class=\"EnteredStamp_bigCircle__xruPG\"></div><div class=\"EnteredStamp_midCircle__vSVu6\"></div><div class=\"EnteredStamp_smallCircle__VIkUx\"></div></div>"
-  };
-</script>
-
-<script>
-(() => {
-  'use strict';
-
-  // ===== persisted state =====
-  const KEY = 'td_clone_state_v3';
-
-  const safeJsonParse = (s) => {
-    try { return JSON.parse(s); } catch { return null; }
-  };
-
-  const loadState = () => safeJsonParse(localStorage.getItem(KEY)) || null;
-  const saveState = (st) => {
-    localStorage.setItem(KEY, JSON.stringify(st));
-    try {
-      const legacy = safeJsonParse(localStorage.getItem('tdClone.ticket.v1')) || {};
-      legacy.title = st?.title ?? legacy.title ?? '';
-      legacy.venue = st?.venue ?? legacy.venue ?? '';
-      legacy.date = st?.date ?? legacy.date ?? '';
-      legacy.dow = st?.dow ?? legacy.dow ?? '';
-      legacy.open = st?.open ?? legacy.open ?? '';
-      legacy.start = st?.start ?? legacy.start ?? '';
-      legacy.ticketType = st?.ticketType ?? legacy.ticketType ?? '';
-      legacy.name = st?.name ?? legacy.name ?? '';
-      legacy.kind = st?.kind ?? legacy.kind ?? '';
-      legacy.bgRotateDeg = st?.bgRotateDeg ?? legacy.bgRotateDeg ?? 60;
-      legacy.seat = st?.seat ?? legacy.seat ?? '';
-      if (st?.qrData) legacy.qrDataUrl = st.qrData;
-      if (st?.posterData) legacy.posterDataUrl = st.posterData;
-      localStorage.setItem('tdClone.ticket.v1', JSON.stringify(legacy));
-    } catch {}
-  };
-
-  const nowHHMM = () => {
-    const d = new Date();
-    return String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
-  };
-
-
-  const isForcedPosterSrc = (src) => /(?:^|\/)(poster\.png|ticket_before\.png)(?:$|[?#])/.test(String(src || ''));
-
-  function getPersistedPosterSrc(){
-    const saved = loadState();
-    const candidates = [
-      saved?.posterData,
-      document.getElementById('mainPoster')?.dataset?.stored,
-      document.getElementById('blurPoster')?.dataset?.stored,
-      document.getElementById('mainPoster')?.getAttribute('src'),
-      document.getElementById('blurPoster')?.getAttribute('src')
-    ].filter(Boolean);
-    return candidates.find(src => src && src !== 'data:,' && !isForcedPosterSrc(src)) || null;
-  }
-
-  function applyPosterToDom(src){
-    const clean = src && src !== 'data:,' && !isForcedPosterSrc(src) ? src : null;
-    const blur = document.getElementById('blurPoster');
-    const main = document.getElementById('mainPoster');
-    [blur, main].forEach((img) => {
-      if (!img) return;
-      if (clean) {
-        img.src = clean;
-        img.dataset.stored = clean;
-      } else {
-        img.removeAttribute('src');
-        delete img.dataset.stored;
-      }
-    });
-  }
-
-  // ===== helpers =====
-  const $ = (sel, root=document) => root.querySelector(sel);
-  const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
-
-  function readFileAsDataURL(file){
-    return new Promise((resolve, reject) => {
-      const r = new FileReader();
-      r.onload = () => resolve(String(r.result || ''));
-      r.onerror = () => reject(new Error('file read error'));
-      r.readAsDataURL(file);
-    });
-  }
-
-  // ===== DOM node locators (stable IDs were injected in index_patched.html) =====
-  const nodes = () => ({
-    title: document.getElementById('eventName'),
-    venue: document.getElementById('eventVenue'),
-    date: document.getElementById('eventDate'),
-    dow: document.getElementById('eventDow'),
-    open: document.getElementById('eventOpen'),
-    start: document.getElementById('eventStart'),
-    ticketType: document.getElementById('ticketType'),
-    userName: document.getElementById('userName'),
-    kind1: document.getElementById('ticketKindLine1'),
-    kind2: document.getElementById('ticketKindLine2'),
-    seat: document.querySelector('[id^="referenceNumber-"]'),
-    bgAnimation: document.querySelector('.TicketIdPage_bgAnimation__heYX0') || document.querySelector('[class*="bgAnimation"]'),
-    qrContainer: document.querySelector('.TicketCenterImage_qrContainer__2Uipr') || document.querySelector('[class*="qrContainer"]'),
-    lowerWrapper: document.querySelector('.TicketAction_lowerWrapper__XrOia') || null,
-    enterBtn: (() => {
-      const buttons = Array.from(document.querySelectorAll('button'));
-      return buttons.find(b => (b.textContent||'').includes('入場する') && (b.textContent||'').includes('係員'));
-    })(),
-  });
-
-  // ===== originals for reverting entered state =====
-  let original = {
-    qrHTML: null,
-    lowerHTML: null,
-    enterOuterHTML: null,
-  };
-
-  function captureOriginals(){
-    const n = nodes();
-    if (original.qrHTML == null && n.qrContainer) original.qrHTML = n.qrContainer.innerHTML;
-    if (original.lowerHTML == null && n.lowerWrapper) original.lowerHTML = n.lowerWrapper.innerHTML;
-    if (original.enterOuterHTML == null && n.enterBtn) original.enterOuterHTML = n.enterBtn.outerHTML;
-  }
-
-  // ===== entered state rendering =====
-  function renderEntered(entered, enteredTime, posterData){
-    captureOriginals();
-    const T = window.__TD_CLONE__ || {};
-    const n = nodes();
-
-    if (!entered){
-      // restore
-      if (n.qrContainer && original.qrHTML != null) n.qrContainer.innerHTML = original.qrHTML;
-      if (n.lowerWrapper && original.lowerHTML != null) {
-        n.lowerWrapper.innerHTML = original.lowerHTML;
-      } else if (n.enterBtn && original.enterOuterHTML != null) {
-        // if button was replaced, try to restore it into its parent
-        const parent = n.enterBtn.parentElement;
-        if (parent) parent.innerHTML = original.enterOuterHTML;
-      }
-      // re-bind enter button (if present)
-      bootEnterButton();
-      // restore時はQR(canvas)が空になるので、オフライン用QRを再注入
-      try {
-        const stored = readStorage();
-        bootQrOffline(stored?.qrDataUrl);
-      } catch {}
-      applyPosterToDom(posterData || getPersistedPosterSrc() || null);
-      return;
-    }
-
-    // 1) QR area -> poster image + stamp
-    if (n.qrContainer) {
-      const posterSrc = posterData || getPersistedPosterSrc() || null;
-      n.qrContainer.innerHTML = `
-        <div class="FlexBox_flex__q0PvO TicketCenterImage_enteredContainer__Y7s40" role="presentation"
-             style="justify-content:center;align-items:center;">
-          <img id="mainPoster" src="${posterSrc || 'data:,'}"
-               data-stored="${posterSrc || ''}"
-               alt="イベント画像"
-               style="width:100%;height:399px;object-fit:cover;border-radius:0;" />
-        </div>
-      `;
-
-      const stampWrap = document.createElement('div');
-      stampWrap.innerHTML = T.stampHtml || '';
-
-      const stampContainer = document.createElement('div');
-      stampContainer.style.position = 'absolute';
-      stampContainer.style.pointerEvents = 'none';
-      stampContainer.style.setProperty('right', '0.8rem', 'important');
-      stampContainer.style.setProperty('bottom', '0.8rem', 'important');
-
-      const hhmm = /^\d{1,2}:\d{2}$/;
-      const timeCandidates = Array.from(stampWrap.querySelectorAll('[class*="time"], span'));
-      const timeEls = timeCandidates.filter(el => hhmm.test((el.textContent || '').trim()));
-      const setTo = enteredTime || nowHHMM();
-      (timeEls.length ? timeEls : timeCandidates.slice(0, 1))
-        .forEach(el => { if (el) el.textContent = setTo; });
-
-      while (stampWrap.firstChild) stampContainer.appendChild(stampWrap.firstChild);
-
-      n.qrContainer.style.position = 'relative';
-      n.qrContainer.appendChild(stampContainer);
-      applyPosterToDom(posterSrc || null);
-    }
-
-    // 2) keep lower area unchanged after entering
-    const enteredHtml = original.lowerHTML || '';
-
-    if (n.lowerWrapper) {
-      n.lowerWrapper.innerHTML = enteredHtml;
-    } else if (n.enterBtn) {
-      n.enterBtn.outerHTML = enteredHtml;
-    }
-  }
-
-  // ===== QR offline bootstrap =====
-  function bootQrOffline(qrData){
-    const n = nodes();
-    const qr = n.qrContainer;
-    if (!qr) return;
-
-    // If already replaced (entered), do nothing.
-    if (qr.querySelector('.TicketCenterImage_enteredContainer__Y7s40')) return;
-
-    const imgSrc = qrData || 'qr.png';
-    qr.innerHTML = `
-      <img src="${imgSrc}"
-           alt="QRコード"
-           style="width:288px;height:288px;background:#fff;padding:8px;border-radius:4px;" />
-    `;
-  }
-
-  // ===== Nav menu (burger) =====
-  function getMenuEls() {
-    return {
-      burger: document.getElementById('burgerBtn') || document.querySelector('.NavHeader_button__3DYQn'),
-      backdrop: document.querySelector('.NavMenu_backdrop__oUR1f'),
-      menu: document.querySelector('.NavMenu_menu__lZL_P'),
-      closeBtn: document.querySelector('.NavMenu_button__DKREK'),
-    };
-  }
-
-  function openNavMenu() {
-    const { backdrop, menu } = getMenuEls();
-    if (backdrop) {
-      backdrop.classList.remove('NavMenu_backdropClosed__ps0Yv');
-      backdrop.classList.add('NavMenu_backdropOpen__gzCob');
-    }
-    if (menu) {
-      menu.classList.remove('NavMenu_menuClosed__xyNKE');
-      menu.classList.add('NavMenu_menuOpen__D_X2h');
-    }
-  }
-
-  function closeNavMenu() {
-    const { backdrop, menu } = getMenuEls();
-    if (backdrop) {
-      backdrop.classList.add('NavMenu_backdropClosed__ps0Yv');
-      backdrop.classList.remove('NavMenu_backdropOpen__gzCob');
-    }
-    if (menu) {
-      menu.classList.add('NavMenu_menuClosed__xyNKE');
-      menu.classList.remove('NavMenu_menuOpen__D_X2h');
-    }
-  }
-
-  function bootNavMenu() {
-    const { burger, backdrop, closeBtn } = getMenuEls();
-    burger?.addEventListener('click', openNavMenu);
-    backdrop?.addEventListener('click', closeNavMenu);
-    closeBtn?.addEventListener('click', closeNavMenu);
-    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNavMenu(); });
-  }
-
-  // ===== "入場する" confirm modal =====
-  function openEnterModal() {
-    const T = window.__TD_CLONE__ || {};
-    if (!T.modalHtml) return;
-    if (document.querySelector('.Modal_root__MCbfm')) return;
-
-    const wrapper = document.createElement('div');
-    wrapper.innerHTML = T.modalHtml;
-    document.body.appendChild(wrapper);
-
-    const modalRoot = document.querySelector('.Modal_root__MCbfm') || wrapper;
-    const cancelBtn = Array.from(modalRoot.querySelectorAll('button')).find(
-      (b) => (b.textContent || '').trim() === 'キャンセル'
-    );
-    const confirmBtn = Array.from(modalRoot.querySelectorAll('button')).find(
-      (b) => (b.textContent || '').includes('入場する')
-    );
-
-    const close = () => {
-      wrapper.remove();
-      document.body.style.overflow = '';
-    };
-
-    const backdrop = modalRoot.querySelector('.Modal_backdrop__AeKmW') || modalRoot.querySelector('[class*="backdrop"]');
-    backdrop?.addEventListener('click', close);
-    cancelBtn?.addEventListener('click', close);
-
-    confirmBtn?.addEventListener('click', () => {
-      playEnterLoadingThenApply(close);
-    });
-
-    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); }, { once: true });
-    document.body.style.overflow = 'hidden';
-  }
-
-  function getEnterLoadingDuration() {
-    return Math.floor(1000 + Math.random() * 1001);
-  }
-
-  function buildEnterLoadingOverlay() {
-    const overlay = document.createElement('div');
-    overlay.className = 'TDEnterLoadingOverlay';
-    overlay.setAttribute('aria-hidden', 'true');
-
-    const spinner = document.createElement('div');
-    spinner.className = 'TDEnterLoadingSpinner';
-    const opacities = [1, 0.88, 0.76, 0.64, 0.5, 0.38, 0.28, 0.18];
-    for (let i = 0; i < 8; i += 1) {
-      const spoke = document.createElement('i');
-      spoke.style.transform = `rotate(${i * 45}deg)`;
-      spoke.style.opacity = String(opacities[i]);
-      spinner.appendChild(spoke);
-    }
-    overlay.appendChild(spinner);
-    return overlay;
-  }
-
-  function playEnterLoadingThenApply(closeModal) {
-    const overlay = buildEnterLoadingOverlay();
-    const host = document.querySelector('.Modal_root__MCbfm') || document.body;
-    host.appendChild(overlay);
-    document.body.style.overflow = 'hidden';
-
-    requestAnimationFrame(() => overlay.classList.add('is-visible'));
-
-    window.setTimeout(() => {
-      const st = loadState() || collectStateFromDom();
-      st.entered = true;
-      st.enteredTime = nowHHMM();
-      saveState(st);
-      applyStateToDom(st);
-      overlay.classList.remove('is-visible');
-
-      window.setTimeout(() => {
-        overlay.remove();
-        if (typeof closeModal === 'function') closeModal();
-        document.body.style.overflow = '';
-      }, 90);
-    }, getEnterLoadingDuration());
-  }
-
-
-  
-
-function bootEnterButton(){
-    const n = nodes();
-    const btn = n.enterBtn;
-    btn?.addEventListener('click', openEnterModal);
-  }
-
-  // ===== local editor panel =====
-  function getEditorEls(){
-    return {
-      openFromMenu: document.getElementById('openEditorFromMenu'),
-      logoutBtn: document.getElementById('logoutOpenEditor'),
-      backdrop: document.getElementById('localEditorBackdrop'),
-      panel: document.getElementById('localEditor'),
-      closeBtn: document.getElementById('localEditorClose'),
-      cancelBtn: document.getElementById('localEditorCancel'),
-      applyBtn: document.getElementById('localEditorApply'),
-      body: document.querySelector('#localEditor .body'),
-      fTitle: document.getElementById('fTitle'),
-      fVenue: document.getElementById('fVenue'),
-      fDate: document.getElementById('fDate'),
-      fDow: document.getElementById('fDow'),
-      fOpen: document.getElementById('fOpen'),
-      fStart: document.getElementById('fStart'),
-      fName: document.getElementById('fName'),
-      fTicketType: document.getElementById('fticketType'),
-      fKind: document.getElementById('fKind'),
-      fBgRotate: document.getElementById('fBgRotate'),
-      fSeat: document.getElementById('fSeat'),
-      fQr: document.getElementById('fQr'),
-      fPoster: document.getElementById('fPoster'),
-      fPart: document.getElementById('fPart'),
-    };
-  }
-
-  function openEditor(){
-    const { backdrop, panel } = getEditorEls();
-    if (!backdrop || !panel) return;
-    backdrop.classList.remove('hiddenLocal');
-    panel.classList.remove('hiddenLocal');
-    backdrop.setAttribute('aria-hidden', 'false');
-    panel.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeEditor(){
-    const { backdrop, panel } = getEditorEls();
-    if (!backdrop || !panel) return;
-    backdrop.classList.add('hiddenLocal');
-    panel.classList.add('hiddenLocal');
-    backdrop.setAttribute('aria-hidden', 'true');
-    panel.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  function injectEnteredControls(){
-    const E = getEditorEls();
-    if (!E.body) return;
-    if (document.getElementById('enteredControls')) return;
-
-    const wrap = document.createElement('div');
-    wrap.id = 'enteredControls';
-    wrap.style.marginTop = '12px';
-    wrap.style.paddingTop = '12px';
-    wrap.style.borderTop = '1px solid rgba(0,0,0,.08)';
-
-    wrap.innerHTML = `
-      <div style="font-size:12px;font-weight:700;margin-bottom:8px;">状態</div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <button type="button" id="btnSetUnused" style="flex:1;min-width:140px;height:40px;border-radius:10px;border:1px solid rgba(0,0,0,.15);background:#fff;font-weight:700;cursor:pointer;">未使用に戻す</button>
-        <button type="button" id="btnSetUsed" style="flex:1;min-width:140px;height:40px;border-radius:10px;border:1px solid rgba(232,21,21,.25);background:#e81515;color:#fff;font-weight:700;cursor:pointer;">入場済みにする</button>
-      </div>
-      <div style="font-size:12px;color:#666;margin-top:8px;line-height:1.4;">
-        ※「入場する」→確認→入場でも入場済みになります。手動でも切り替えできます。
-      </div>
-    `;
-
-    E.body.appendChild(wrap);
-
-    $('#btnSetUnused', wrap)?.addEventListener('click', () => {
-      const st = loadState() || collectStateFromForm();
-      st.entered = false;
-      st.enteredTime = null;
-      saveState(st);
-      applyStateToDom(st);
-    });
-
-    $('#btnSetUsed', wrap)?.addEventListener('click', () => {
-      const st = loadState() || collectStateFromForm();
-      st.entered = true;
-      st.enteredTime = nowHHMM();
-      saveState(st);
-      applyStateToDom(st);
-    });
-  }
-
-  function collectStateFromDom(){
-    const n = nodes();
-
-    const nameSpan = n.userName ? n.userName.querySelector('span') : null;
-    const nameTxt = nameSpan ? (nameSpan.textContent||'').trim() : '';
-
-    const st = {
-      title: (n.title?.textContent || '').trim(),
-      venue: (n.venue?.textContent || '').trim(),
-      date: (n.date?.textContent || '').trim(),
-      dow: (n.dow?.textContent || '').trim(),
-      open: (n.open?.textContent || '').trim(),
-      start: (n.start?.textContent || '').trim(),
-      ticketType: (n.ticketType?.textContent || '').trim(),
-      name: nameTxt,
-      kind: [
-        (n.kind1?.textContent || '').trim(),
-        (n.kind2?.textContent || '').trim()
-      ].filter(Boolean).join('\n'),
-      bgRotateDeg: (() => {
-        const m = (n.bgAnimation?.style?.transform || n.bgAnimation?.getAttribute('style') || '').match(/rotate\((-?\d+(?:\.\d+)?)deg\)/);
-        return m ? m[1] : '60';
-      })(),
-      seat: (n.seat?.textContent || '').trim(),
-      qrData: null,
-      posterData: getPersistedPosterSrc(),
-      entered: false,
-      enteredTime: null,
-      part:(document.getElementById('ticketPartText')?.textContent||'').trim(),
-    };
-    return st;
-  }
-
-  function collectStateFromForm(){
-    const E = getEditorEls();
-    return {
-      title: (E.fTitle?.value || '').trim(),
-      venue: (E.fVenue?.value || '').trim(),
-      date: (E.fDate?.value || '').trim(),
-      dow: (E.fDow?.value || '').trim(),
-      open: (E.fOpen?.value || '').trim(),
-      start: (E.fStart?.value || '').trim(),
-      ticketType: (E.fTicketType?.value || '').trim(),
-      name: (E.fName?.value || '').trim(),
-      kind: (E.fKind?.value || '').trim(),
-      bgRotateDeg: (E.fBgRotate?.value || '60').trim(),
-      seat: (E.fSeat?.value || '').trim(),
-      qrData: null,
-      posterData: (loadState()||{}).posterData || getPersistedPosterSrc(),
-      entered: (loadState()||{}).entered || false,
-      enteredTime: (loadState()||{}).enteredTime || null,
-      part:(E.fPart?.value||'').trim(),
-    };
-  }
-
-  function applyStateToDom(st){
-    const n = nodes();
-
-    if (n.title && st.title) n.title.textContent = st.title;
-    if (n.venue && st.venue) n.venue.textContent = st.venue;
-    const tp=document.getElementById('ticketPartText'); const tb=document.getElementById('ticketPartBorder');
-    if(tp&&tb){tp.textContent=st.part||''; tp.style.display=st.part?'inline-block':'none'; tb.style.display=st.part?'block':'none';}
-    if (n.date && st.date) n.date.textContent = st.date;
-    if (n.dow && st.dow) n.dow.textContent = st.dow;
-    if (n.open && st.open) n.open.textContent = st.open;
-    if (n.start && st.start) n.start.textContent = st.start;
-    if (n.ticketType && typeof st.ticketType === 'string') n.ticketType.textContent = st.ticketType;
-
-    // user name: first span inside #userName
-    if (n.userName && st.name){
-      const first = n.userName.querySelector('span');
-      if (first) first.textContent = st.name;
-      else n.userName.textContent = st.name;
-    }
-
-    // kind lines -> #ticketKindLine1 / #ticketKindLine2
-    if (st.kind){
-      const lines = String(st.kind).split(/\r?\n/).map(s => s.trim()).filter(Boolean);
-      const l1 = lines[0] || '';
-      const l2 = lines.slice(1).join(' ') || '';
-      if (n.kind1 && l1) n.kind1.textContent = l1;
-      if (n.kind2) n.kind2.textContent = l2;
-    }
-
-    // seat -> referenceNumber
-    if (n.seat && st.seat) n.seat.textContent = st.seat;
-
-    // background text rotation
-    if (n.bgAnimation){
-      const raw = String(st.bgRotateDeg ?? '60').trim();
-      const num = Number(raw);
-      const angle = Number.isFinite(num) ? num : 60;
-      n.bgAnimation.style.transform = `rotate(${angle}deg)`;
-      n.bgAnimation.style.transformOrigin = angle < 0 ? '25rem 70rem' : '40rem -5rem';
-    }
-
-    // qr image (only when not entered)
-    if (!st.entered){
-      bootQrOffline(st.qrData || null);
-      applyPosterToDom(st.posterData || getPersistedPosterSrc() || null);
-    }
-
-    // entered visuals
-    renderEntered(!!st.entered, st.enteredTime || null, st.posterData || null);
-  }
-
-  function applyStateToForm(st){
-    const E = getEditorEls();
-    if (!E.fTitle) return;
-    E.fTitle.value = st.title ?? E.fTitle.value;
-    E.fVenue.value = st.venue ?? E.fVenue.value;
-    E.fDate.value = st.date ?? E.fDate.value;
-    E.fDow.value = st.dow ?? E.fDow.value;
-    E.fOpen.value = st.open ?? E.fOpen.value;
-    E.fStart.value = st.start ?? E.fStart.value;
-    if (E.fTicketType) E.fTicketType.value = st.ticketType ?? E.fTicketType.value;
-    E.fName.value = st.name ?? E.fName.value;
-    E.fKind.value = st.kind ?? E.fKind.value;
-    if (E.fBgRotate) E.fBgRotate.value = st.bgRotateDeg ?? E.fBgRotate.value;
-    E.fSeat.value = st.seat ?? E.fSeat.value;
-    if (E.fPart) E.fPart.value = st.part ?? E.fPart.value;
-  }
-
-  async function onApply(){
-    const E = getEditorEls();
-    const prev = loadState() || collectStateFromDom();
-    const st = { ...prev, ...collectStateFromForm() };
-
-    // files -> dataURL (persist to localStorage)
-    try{
-      const qrFile = E.fQr?.files?.[0];
-      if (qrFile) st.qrData = await readFileAsDataURL(qrFile);
-      const posterFile = E.fPoster?.files?.[0];
-      if (posterFile) st.posterData = await readFileAsDataURL(posterFile);
-    }catch(e){
-      // ignore file read errors
-    }
-
-    saveState(st);
-    applyStateToDom(st);
-    closeEditor();
-  }
-
-  function bootEditor(){
-    const E = getEditorEls();
-    if (!E.panel || !E.backdrop) return;
-
-    injectEnteredControls();
-
-    const openHandler = (e) => { e?.preventDefault?.(); openEditor(); closeNavMenu(); };
-    E.openFromMenu?.addEventListener('click', openHandler);
-    E.logoutBtn?.addEventListener('click', openHandler);
-    E.backdrop?.addEventListener('click', closeEditor);
-    E.closeBtn?.addEventListener('click', closeEditor);
-    E.cancelBtn?.addEventListener('click', closeEditor);
-    E.applyBtn?.addEventListener('click', onApply);
-
-    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeEditor(); });
-  }
-
-  function boot(){
-    captureOriginals();
-    bootNavMenu();
-    bootEditor();
-    bootEnterButton();
-
-    // hydrate from storage if present
-    const saved = loadState();
-    if (saved){
-      applyStateToDom(saved);
-      applyStateToForm(saved);
-      applyPosterToDom(saved.posterData || getPersistedPosterSrc() || null);
-    }else{
-      // ensure QR is visible offline by default
-      bootQrOffline(null);
-      applyPosterToDom(getPersistedPosterSrc() || null);
-    }
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
-  } else {
-    boot();
-  }
-})();
-</script>
-
-
-<script>
-(function(){
- function run(){
-   const fPart=document.getElementById('fPart');
-   const txt=document.getElementById('ticketPartText');
-   const border=document.getElementById('ticketPartBorder');
-   if(!fPart||!txt||!border) return;
-
-   function sync(){
-     const v=(fPart.value||'').trim();
-     txt.textContent=v;
-     txt.style.display=v?'inline-block':'none';
-     border.style.display=v?'block':'none';
-   }
-
-   fPart.addEventListener('input',sync);
-   sync();
- }
-
- if(document.readyState==='loading'){
-   document.addEventListener('DOMContentLoaded',run);
- }else{
-   run();
- }
-})();
-</script>
-
 </html>
 
-<script>
-document.addEventListener('DOMContentLoaded',()=>{
- const fPart=document.getElementById('fPart');
- const txt=document.getElementById('ticketPartText');
- const border=document.getElementById('ticketPartBorder');
- if(!fPart||!txt||!border) return;
- function sync(){
-   const v=fPart.value.trim();
-   txt.textContent=v;
-   txt.style.display=v?'inline-block':'none';
-   border.style.display=v?'block':'none';
- }
- fPart.addEventListener('input',sync);
- sync();
-});
-</script>
